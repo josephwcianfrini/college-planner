@@ -1,0 +1,265 @@
+:root {
+  --bg: #f5f3ef;
+  --card: #ffffff;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --accent: #1f7a6f;
+  --accent-light: #d9f3ee;
+  --border: #e5e7eb;
+  --shadow: 0 10px 25px rgba(31, 36, 48, 0.08);
+  --radius: 14px;
+  --font: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #ffffff 0%, #f5f3ef 50%, #efe8df 100%);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-top: 18px;
+  box-shadow: var(--shadow);
+}
+
+.highlight {
+  background: var(--accent-light);
+  border-color: #b8e6da;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.btn {
+  border: none;
+  background: #e9ecef;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn.light {
+  background: #f3f4f6;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.filter.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.today-meta {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.quick-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.plan {
+  margin-top: 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px dashed var(--border);
+  font-size: 0.9rem;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 36, 48, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  width: min(480px, 100%);
+  background: white;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.help {
+  margin-top: 12px;
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .today-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task {
+    grid-template-columns: 1fr;
+  }
+
+  .task-actions {
+    justify-content: flex-start;
+  }
+}

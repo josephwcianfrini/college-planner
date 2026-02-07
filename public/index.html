@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <h1>Today</h1>
+          <p class="subtitle">What do I need to do next?</p>
+        </div>
+        <button id="add-task-open" class="btn primary">Add Task</button>
+      </header>
+
+      <section class="card highlight" id="banner" hidden>
+        <strong>Reminder:</strong> You have tasks due today or overdue.
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <div class="card-title">Top 5 for Today</div>
+          <ul id="today-list" class="task-list"></ul>
+          <div class="today-meta">
+            <span>Total minutes: <strong id="today-minutes">0</strong></span>
+            <button id="plan-day" class="btn">Plan My Day</button>
+          </div>
+          <div id="plan-output" class="plan" hidden></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Quick Add</div>
+          <div class="quick-buttons">
+            <button class="btn light" data-template="assignment">Assignment due</button>
+            <button class="btn light" data-template="study">Study session</button>
+            <button class="btn light" data-template="exam">Quiz/Exam</button>
+          </div>
+          <div class="help">
+            <button id="help-toggle" class="link">How to use</button>
+            <div id="help" hidden>
+              <p>Add a task, set a due date if you have one, then hit Enter or Add.</p>
+              <p>Use filters to focus on today or overdue tasks.</p>
+              <p>“Plan My Day” builds a quick Pomodoro schedule.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="filters">
+          <button class="filter active" data-filter="today">Today</button>
+          <button class="filter" data-filter="week">This Week</button>
+          <button class="filter" data-filter="overdue">Overdue</button>
+          <button class="filter" data-filter="all">All</button>
+          <button class="filter" data-filter="completed">Completed</button>
+        </div>
+        <div class="task-header">
+          <span>Tasks</span>
+          <span class="small">Sorted by due date, then priority</span>
+        </div>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <div id="task-modal" class="modal" hidden>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">Add Task</h2>
+          <button id="modal-close" class="link">Close</button>
+        </div>
+        <form id="task-form" class="form">
+          <label>
+            Title*
+            <input id="title" name="title" required autocomplete="off" />
+          </label>
+          <label>
+            Due date
+            <input id="dueDate" name="dueDate" type="date" />
+          </label>
+          <label>
+            Course/Tag
+            <input id="course" name="course" autocomplete="off" />
+          </label>
+          <label>
+            Priority
+            <select id="priority" name="priority">
+              <option>Low</option>
+              <option selected>Med</option>
+              <option>High</option>
+            </select>
+          </label>
+          <label>
+            Estimated minutes
+            <input id="minutes" name="minutes" type="number" min="0" step="5" placeholder="e.g., 45" />
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Save Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
