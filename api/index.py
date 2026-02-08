@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 import json
-import os
 from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, FileResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = BASE_DIR / "data" / "tasks.json"
-PUBLIC_DIR = BASE_DIR / "public"
 
 app = FastAPI()
 
@@ -78,12 +75,3 @@ def delete_task(task_id: str) -> dict[str, str]:
     tasks = [task for task in tasks if task.get("id") != task_id]
     _write_data(tasks)
     return {"status": "deleted"}
-
-
-@app.get("/")
-def index() -> FileResponse:
-    return FileResponse(PUBLIC_DIR / "index.html")
-
-
-# Serve static assets (JS/CSS) for Vercel if root routing hits the API.
-app.mount("/", StaticFiles(directory=PUBLIC_DIR, html=True), name="static")
